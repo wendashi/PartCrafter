@@ -280,7 +280,7 @@ class DiTBlock(nn.Module):
 
         # Notice that normalization is always applied before the real computation in the following blocks.
         # 0. Long Skip Connection
-        if self.skip_linear is not None:
+        if self.skip_linear is not None: # 在特征维度上拼接两个张量，为了保留跳跃连接和当前特征的所有信息
             cat = torch.cat(
                 (
                     [skip, hidden_states]

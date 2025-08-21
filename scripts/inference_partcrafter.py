@@ -5,6 +5,10 @@ from glob import glob
 import time
 from typing import Any, Union
 
+# Add project root to Python path
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, project_root)
+
 import numpy as np
 import torch
 import trimesh
@@ -82,9 +86,9 @@ if __name__ == "__main__":
     assert 1 <= args.num_parts <= MAX_NUM_PARTS, f"num_parts must be in [1, {MAX_NUM_PARTS}]"
 
     # download pretrained weights
-    partcrafter_weights_dir = "pretrained_weights/PartCrafter"
-    rmbg_weights_dir = "pretrained_weights/RMBG-1.4"
-    snapshot_download(repo_id="wgsxm/PartCrafter", local_dir=partcrafter_weights_dir)
+    partcrafter_weights_dir = "/opt/liblibai-models/user-workspace/colabrate/wenda/models/pretrained/PartCrafter"
+    rmbg_weights_dir = "/opt/liblibai-models/user-workspace/colabrate/wenda/models/pretrained/RMBG-1.4"
+    # snapshot_download(repo_id="wgsxm/PartCrafter", local_dir=partcrafter_weights_dir)
     snapshot_download(repo_id="briaai/RMBG-1.4", local_dir=rmbg_weights_dir)
 
     # init rmbg model for background removal
